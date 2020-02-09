@@ -13,17 +13,20 @@ public class User {
     private String firstName;
     private String lastName;
     private String address;
+    private String phone;
 
     public User() {
     }
 
-    public User(String username, String password, String firstName, String lastName, String address) {
+    public User(String username, String password, String firstName, String lastName, String address, String phone) {
         this.username = username;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
+        this.phone = phone;
     }
+
 
     public String getUsername() {
         return username;
@@ -65,6 +68,14 @@ public class User {
         this.address = address;
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,11 +85,12 @@ public class User {
                 Objects.equals(password, user.password) &&
                 Objects.equals(firstName, user.firstName) &&
                 Objects.equals(lastName, user.lastName) &&
-                Objects.equals(address, user.address);
+                Objects.equals(address, user.address) &&
+                Objects.equals(phone, user.phone);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(username, password, firstName, lastName, address);
+        return Objects.hash(username, password, firstName, lastName, address, phone);
     }
 }

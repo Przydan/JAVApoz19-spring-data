@@ -17,9 +17,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserRepositoryTest {
 
-    private final User user = new User("user", "user", "John", "Example", "adres");
-    private final User user2 = new User("user2", "user2", "Johny", "Beer", "adres");
-    private final User admin = new User("admin", "admin", "John", "Admin", "adres");
+    private final User user = new User("user", "user", "John", "Example", "adres", "123");
+    private final User user2 = new User("user2", "user2", "Johny", "Beer", "adres", "456");
+    private final User admin = new User("admin", "admin", "John", "Admin", "adres", "789");
 
     @Autowired
     private UserRepository userRepository;
@@ -82,7 +82,7 @@ public class UserRepositoryTest {
     @Transactional
     public void shouldAddNewUserToDatabase() {
         //given
-        User newUser = new User("newUser", "newUser", "name", "lastName", "adres");
+        User newUser = new User("newUser", "newUser", "name", "lastName", "adres", null);
 
         //when
         userRepository.save(newUser);
@@ -95,7 +95,7 @@ public class UserRepositoryTest {
     @Transactional
     public void shouldUpdateUser() {
         //given
-        User updatedUser = new User("user", "password", "John", "Example", "adres");
+        User updatedUser = new User("user", "password", "John", "Example", "adres", null);
 
         //when
         userRepository.save(updatedUser);
@@ -103,5 +103,14 @@ public class UserRepositoryTest {
         //then
         assertThat(userRepository.count()).isEqualTo(3);
         assertThat(userRepository.findById("user").get()).isEqualTo(updatedUser);
+    }
+
+    @Test
+    public void shouldFindUserViaPhoneNumber() {
+        // when
+        List<User> actual = userRepository.findByPhone("123");
+
+        // then
+        assertThat(actual).containsOnly(user);
     }
 }

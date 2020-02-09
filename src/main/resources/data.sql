@@ -1,5 +1,5 @@
-insert INTO USER (username, password, first_name, last_name, address) values ('user', 'user', 'John', 'Example', 'adres');
-insert INTO USER (username, password, first_name, last_name, address) values ('user2', 'user2', 'Johny', 'Beer', 'adres');
-insert INTO USER (username, password, first_name, last_name, address) values ('admin', 'admin', 'John', 'Admin', 'adres');
+insert INTO USER (username, password, first_name, last_name, address, phone) values ('user', 'user', 'John', 'Example', 'adres', '123');
+insert INTO USER (username, password, first_name, last_name, address, phone) values ('user2', 'user2', 'Johny', 'Beer', 'adres', '456');
+insert INTO USER (username, password, first_name, last_name, address, phone) values ('admin', 'admin', 'John', 'Admin', 'adres', '789');
 
 commit;
